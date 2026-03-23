@@ -1,30 +1,24 @@
 # Engineering Delivery Skill Pack
 
-面向 Codex 的工程交付技能包。
+Custom Codex skills for disciplined engineering delivery.
 
-Custom Codex skills for disciplined engineering delivery:
+This repository contains a set of custom skills designed to help Codex handle engineering work more like a rigorous delivery lead and less like a fast prototype generator.
 
-- drive ambiguous work into requirements, PRD, tech spec, plan, and verified execution
-- force end-to-end closure instead of premature “done”
-- design explicit acceptance cases before implementation
-- validate stateful products by real user lifecycle paths
-- reconcile local claims with external sources of truth
+It focuses on five things:
 
-这个仓库聚焦一组互相配合的自定义技能：
+- turning ambiguous requests into requirements, PRDs, tech specs, plans, and execution trackers
+- forcing real end-to-end closure instead of premature “done”
+- designing explicit acceptance test cases before implementation
+- validating stateful products by real user lifecycle paths
+- reconciling local claims with external sources of truth
 
-- `spec-to-ship`
-- `done-means-done`
-- `acceptance-test-design`
-- `stateful-product-validation`
-- `external-system-reconciliation`
+Chinese version: [README.zh-CN.md](./README.zh-CN.md)
 
-目标是让 Codex 在复杂工程任务里更像一个有纪律的工程负责人，而不是只会快速产出半成品。
-
-## 包含的技能
+## Included Skills
 
 ### `spec-to-ship`
 
-把模糊需求推进到：
+Turns vague feature work into:
 
 - requirements
 - PRD
@@ -33,73 +27,135 @@ Custom Codex skills for disciplined engineering delivery:
 - execution tracker
 - verified delivery
 
-它现在额外强调：
+It now also emphasizes:
 
-- 产品形态变化时必须 rebaseline
-- 不能只有抽象验收标准，必须形成验收用例矩阵
-- 聊天 / 会话 / 流式 / 生命周期问题要走状态化产品验证
-- 外部系统集成要区分本地推断与权威真相源
+- rebaselining when the product shape changes
+- requiring acceptance test matrices instead of abstract acceptance bullets
+- routing stateful product work to lifecycle-focused validation
+- separating local inference from external sources of truth
 
 ### `done-means-done`
 
-要求任务真正闭环，不接受：
+Pushes work to a real finish line. It is explicitly designed to prevent:
 
-- 半截交付
-- 把范围内工作包装成可选项
-- 没有证据就宣称完成
-- 被用户验出 bug 后还沿用旧验证为完成背书
+- stopping at a partial implementation
+- optionalizing in-scope follow-up work
+- making completion claims without evidence
+- treating pre-bug-fix validation as still valid after the user reports an issue
 
-它现在额外强调：
+It now also emphasizes:
 
-- 用户旅程级验收用例
-- 真实路径与正式入口验证
-- 外部系统对账
-- 产品形态变化后必须重定义完成标准
+- user-journey-level acceptance cases
+- formal-entry and real-path verification
+- reconciliation with external systems
+- redefining done when the product shape changes midstream
 
 ### `acceptance-test-design`
 
-把需求转成逐条可执行的验收用例矩阵，覆盖：
+Turns feature requirements into explicit acceptance cases covering:
 
-- 用户旅程
-- 视觉效果
-- 交互状态
-- 功能结果
-- 特殊案例
-- 回归路径
+- user journeys
+- visual outcomes
+- interaction states
+- functional outcomes
+- edge cases
+- regression paths
 
 ### `stateful-product-validation`
 
-用于聊天、会话、轮询、流式、附件、分页、断线恢复、长任务等状态化产品。
+For chat, session-based, async, polling, streaming, attachment-heavy, and lifecycle-heavy products.
 
-重点解决“接口看起来没问题，但真实产品体感仍然很差”的情况。
+Its purpose is to catch cases where APIs look healthy but real user experience is still broken.
 
 ### `external-system-reconciliation`
 
-用于第三方 API、远端服务、部署进程、支付/交易/通知系统、设备状态等外部权威真相源场景。
+For tasks involving third-party APIs, remote services, deployment state, payments, notifications, device state, or any external authority-backed system.
 
-重点解决“本地日志或文案说成功，但外部真实状态并不一致”的情况。
+Its purpose is to catch cases where local logs or UI messages claim success but the external system does not agree.
 
-## 安装
+## Installation
 
-把 `skills/` 下需要的目录复制到本机的 Codex skills 目录，例如：
+Copy the skill directories under `skills/` into your Codex skills directory:
 
 ```bash
 cp -R skills/* ~/.codex/skills/
 ```
 
-如果你的环境使用 `$CODEX_HOME/skills`，则复制到对应目录。
+If your environment uses `$CODEX_HOME/skills`, copy them there instead.
 
-## 为什么仓库里没有打包第三方 companion skills
+## Recommended Prompting
 
-本仓库故意不直接镜像第三方 companion skills。
+These skills work best when the user is explicit about outcome, completion, and verification.
 
-原因：
+Good prompt shape:
 
-- 避免把上游 skill 误包装成这里的原创内容
-- 避免公开仓库里出现来源与许可证边界不清
-- 减少后续同步上游时的维护成本
+1. State the goal
+2. State the required output
+3. State that in-scope work should be finished end-to-end
+4. State any important validation expectations
 
-如果你希望完整复现作者当前的工作流，通常还需要额外安装这些技能：
+Example:
+
+```text
+Use $spec-to-ship and $done-means-done for this task.
+Turn this request into requirements, a PRD, a tech spec, a plan, implementation, verification, and closeout.
+Do not stop while in-scope work, validation, review fixes, or doc updates remain.
+```
+
+If the task is UI-heavy:
+
+```text
+Use $done-means-done for this task.
+This is a user-facing interface, so treat layout, interaction quality, readability, and mobile behavior as part of completion.
+```
+
+If the task is likely to produce user acceptance bugs:
+
+```text
+Use $acceptance-test-design before implementation and write explicit acceptance cases for user journeys, edge cases, and regression paths.
+```
+
+If the task is chat, session, streaming, async, polling, or lifecycle-heavy:
+
+```text
+Use $stateful-product-validation and make sure verification covers first-use, continued-use, slow-response, and recovery paths.
+```
+
+If the task depends on third-party or remote truth:
+
+```text
+Use $external-system-reconciliation and verify user-visible results against the external source of truth before claiming success.
+```
+
+## Recommended Way To Give This Repo To Codex
+
+In practice, the easiest way is to give Codex the repository link directly and ask it to install the skills from GitHub.
+
+Recommended wording:
+
+```text
+Install the skills from https://github.com/muhe-code/engineering-delivery-skill-pack.git into my Codex skills directory.
+Use the repo as the source of truth and install these skills:
+- spec-to-ship
+- done-means-done
+- acceptance-test-design
+- stateful-product-validation
+- external-system-reconciliation
+```
+
+If your Codex environment supports a skill installer workflow, this usually works better than manually pasting long skill files into chat.
+
+## Why This Repo Does Not Bundle Third-Party Companion Skills
+
+This repository intentionally does not mirror third-party companion skills.
+
+Reasons:
+
+- to avoid repackaging upstream skills as if they were original to this repo
+- to keep licensing and attribution boundaries clean
+- to reduce maintenance burden when upstream skills evolve
+
+If you want to reproduce the author’s broader workflow, you will usually also want companion skills such as:
 
 - `brainstorming`
 - `writing-plans`
@@ -109,9 +165,9 @@ cp -R skills/* ~/.codex/skills/
 - `frontend-design`
 - `design-taste-frontend`
 
-建议从各自上游来源安装，而不是依赖这个仓库的镜像副本。
+Those are best installed from their own upstream sources.
 
-## 仓库结构
+## Repository Layout
 
 ```text
 skills/
@@ -122,6 +178,6 @@ skills/
   stateful-product-validation/
 ```
 
-## 许可证
+## License
 
-本仓库使用 [MIT License](./LICENSE)。
+This repository is released under the [MIT License](./LICENSE).
