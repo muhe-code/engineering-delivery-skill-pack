@@ -1,0 +1,4 @@
+interface:
+  display_name: "Spec To Ship"
+  short_description: "Drive features from ambiguity to verified delivery."
+  default_prompt: "Use $spec-to-ship to turn this vague feature request into requirements, a PRD, a tech spec, a plan, and a verified implementation."

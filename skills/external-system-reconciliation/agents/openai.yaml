@@ -1,0 +1,4 @@
+interface:
+  display_name: "External System Reconciliation"
+  short_description: "Reconcile local state with external sources of truth."
+  default_prompt: "Use $external-system-reconciliation to verify this integration against the external source of truth before claiming the system is correct."

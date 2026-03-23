@@ -1,0 +1,4 @@
+interface:
+  display_name: "Done Means Done"
+  short_description: "Push work to a real finish line instead of stopping early."
+  default_prompt: "Use $done-means-done so this task is completed end-to-end without premature stopping or unverified completion claims."

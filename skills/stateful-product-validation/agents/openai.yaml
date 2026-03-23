@@ -1,0 +1,4 @@
+interface:
+  display_name: "Stateful Product Validation"
+  short_description: "Validate chat, async, and lifecycle-heavy products."
+  default_prompt: "Use $stateful-product-validation to verify this chat or async product across real user-visible lifecycle paths, not just happy-path API checks."

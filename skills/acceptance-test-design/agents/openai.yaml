@@ -1,0 +1,4 @@
+interface:
+  display_name: "Acceptance Test Design"
+  short_description: "Turn requirements into explicit acceptance cases."
+  default_prompt: "Use $acceptance-test-design to turn this feature into a concrete acceptance test matrix covering user journeys, UI states, special cases, and regression paths."
