@@ -2,6 +2,14 @@
 
 面向 Codex 的工程交付技能包。
 
+Custom Codex skills for disciplined engineering delivery:
+
+- drive ambiguous work into requirements, PRD, tech spec, plan, and verified execution
+- force end-to-end closure instead of premature “done”
+- design explicit acceptance cases before implementation
+- validate stateful products by real user lifecycle paths
+- reconcile local claims with external sources of truth
+
 这个仓库聚焦一组互相配合的自定义技能：
 
 - `spec-to-ship`
@@ -116,6 +124,4 @@ skills/
 
 ## 许可证
 
-当前仓库尚未附带统一 LICENSE 文件。
-
-如果你准备正式对外宣称“欢迎自由复用”，建议先补充明确许可证。
+本仓库使用 [MIT License](./LICENSE)。
