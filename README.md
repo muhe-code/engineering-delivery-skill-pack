@@ -4,7 +4,7 @@ Custom Codex skills for disciplined engineering delivery.
 
 This repository contains a set of custom skills designed to help Codex handle engineering work more like a rigorous delivery lead and less like a fast prototype generator.
 
-It focuses on nine things:
+It focuses on ten things:
 
 - providing a single entrypoint skill when the user wants to reference only one skill
 - turning ambiguous requests into requirements, PRDs, tech specs, plans, and execution trackers
@@ -15,6 +15,7 @@ It focuses on nine things:
 - separating implementer and verifier when self-signoff would be risky
 - turning Codex session history into evidence-driven skill evolution
 - designing the harness for long-running agentic or stateful systems before feature work
+- engineering the skills themselves with the right design pattern when the workflow needs new or evolved skills
 
 Chinese version: [README.zh-CN.md](./README.zh-CN.md)
 
@@ -111,6 +112,19 @@ It supports scoped updates:
 
 - update only a named root skill and its recursively related skills
 - or, if no scope is specified, update the global skill set and the current project skill set
+
+### `skill-engineering`
+
+For creating, updating, splitting, merging, slimming, or optimizing skills themselves.
+
+It helps choose the right structure first:
+
+- Tool Wrapper
+- Generator
+- Reviewer
+- Inversion
+- Pipeline
+- or a combination of them
 
 ### `long-running-app-harness`
 

@@ -161,6 +161,8 @@ python3 ~/.codex/skills/session-to-skill-evolution/scripts/resolve_skill_scope.p
 - 增加验收矩阵要求
 - 增加作用域 / 记忆 / 复盘 / eval 规则
 
+只要本轮已经进入“创建 / 更新 / 拆分 / 合并 / 瘦身 skill”的动作，就应额外使用 `skill-engineering`，先判断应采用哪种 skill 模式，再落文本修改。
+
 ### Stage 5：验证
 
 对每个改过的 skill：

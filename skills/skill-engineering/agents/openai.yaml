@@ -1,0 +1,4 @@
+interface:
+  display_name: "Skill Engineering"
+  short_description: "Create or evolve skills using the right design pattern and structure."
+  default_prompt: "Use $skill-engineering to create, update, split, merge, or optimize skills. Choose the right pattern first, then make the smallest structural changes that solve the real failure mode."

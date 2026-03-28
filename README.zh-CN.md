@@ -4,7 +4,7 @@
 
 这个仓库包含一组自定义技能，目标是让 Codex 在复杂工程任务里更像一个有纪律的工程负责人，而不是只会快速产出半成品。
 
-它主要解决九类问题：
+它主要解决十类问题：
 
 - 当用户只想引用一个技能时，提供单入口编排
 - 把模糊请求推进成 requirements、PRD、tech spec、plan 和 execution tracker
@@ -15,6 +15,7 @@
 - 在自证完成风险很高时，把开发者和验证者角色分离
 - 把 Codex 历史会话沉淀成有证据的技能进化
 - 在长时间运行系统里，先设计 harness，再做功能开发
+- 当工程过程中需要新建或优化 skill 时，按合适的设计模式来工程化这些 skill
 
 English version: [README.md](./README.md)
 
@@ -111,6 +112,19 @@ English version: [README.md](./README.md)
 
 - 只更新某个根技能及其递归关联技能
 - 若未指定范围，则更新全局技能集合和当前工程技能集合
+
+### `skill-engineering`
+
+用于 skill 自身的创建、更新、拆分、合并、瘦身和优化。
+
+它会先判断应采用哪类模式：
+
+- Tool Wrapper
+- Generator
+- Reviewer
+- Inversion
+- Pipeline
+- 或它们的组合
 
 ### `long-running-app-harness`
 
