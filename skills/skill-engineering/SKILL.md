@@ -98,6 +98,21 @@ description: 用于创建、更新、拆分、合并、瘦身或优化 Codex ski
 
 不要只凭“我觉得应该更完善”就堆规则。
 
+### 6. 第三方技能先做兼容审计，再决定是否接入
+
+当一个第三方 skill 要接入当前体系时，至少检查四件事：
+
+- `trigger overlap`
+  - 它会不会和现有主 skill 在相同场景里抢触发
+- `path conflict`
+  - 它会不会把文档、计划、产物写到另一套路径
+- `gate conflict`
+  - 它会不会强制另一套审批门、执行门或 review 门
+- `authority conflict`
+  - 它会不会和现有的关闭权、验收权、完成定义冲突
+
+如果冲突存在，优先做兼容层或本地改写；不要直接原样拼接。
+
 ## 工作流
 
 ### Stage 1：定义本轮 skill 任务
@@ -127,6 +142,7 @@ description: 用于创建、更新、拆分、合并、瘦身或优化 Codex ski
 - 是否需要组合模式
 - 是否需要把一个胖 skill 拆成主 skill + 子 skill
 - 是否应该新增 `references/`、`assets/` 或 `scripts/`
+- 如果是第三方 skill，是否需要先做兼容层
 
 ### Stage 3：设计 skill 结构
 
