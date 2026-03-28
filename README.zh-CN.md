@@ -4,7 +4,7 @@
 
 这个仓库包含一组自定义技能，目标是让 Codex 在复杂工程任务里更像一个有纪律的工程负责人，而不是只会快速产出半成品。
 
-它主要解决八类问题：
+它主要解决九类问题：
 
 - 当用户只想引用一个技能时，提供单入口编排
 - 把模糊请求推进成 requirements、PRD、tech spec、plan 和 execution tracker
@@ -12,6 +12,7 @@
 - 在实现前先设计逐条验收用例
 - 按真实用户生命周期路径验证有状态产品
 - 把本地推断和外部权威真相源区分开
+- 在自证完成风险很高时，把开发者和验证者角色分离
 - 把 Codex 历史会话沉淀成有证据的技能进化
 - 在长时间运行系统里，先设计 harness，再做功能开发
 
@@ -64,6 +65,20 @@ English version: [README.md](./README.md)
 - 正式入口与真实路径验证
 - 外部系统对账
 - 产品形态变化后必须重定义完成标准
+- 小改动可以轻流程，但不能轻视影响分析和回归判断
+- 独立验证问题没有重验关闭前，不得宣称完成
+
+### `independent-verification`
+
+用于在任务不能安全依赖“实现者自证完成”时，把开发者与验证者分离。
+
+它重点处理：
+
+- 反向找错
+- 结构化验证问题
+- 问题状态流转与重验
+- 影响面与回归点审计
+- 在证据被独立确认前阻断完成声明
 
 ### `acceptance-test-design`
 
@@ -108,6 +123,7 @@ English version: [README.md](./README.md)
 - 机械化约束
 - 运行时信号与可观测性
 - eval gate
+- verifier issue ledger 与 continuation packet
 - kill switch 与 rollback
 
 ## 安装

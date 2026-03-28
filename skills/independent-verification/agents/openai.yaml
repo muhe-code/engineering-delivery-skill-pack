@@ -1,0 +1,4 @@
+interface:
+  display_name: "Independent Verification"
+  short_description: "Run an adversarial verification pass and block self-signoff without evidence."
+  default_prompt: "Use $independent-verification for this task. Validate it from an independent verifier perspective, manage verification issues explicitly, and do not allow the implementer to self-sign off without re-verification."

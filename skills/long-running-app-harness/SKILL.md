@@ -84,6 +84,10 @@ Codex 只能根据它能读到的东西工作。
 - 怎么暂停 / 禁用
 - 怎么回滚
 
+### 5. 上下文边界是交接点，不是停止点
+
+长运行系统天然需要多轮观察和多轮修正。上下文接近上限、会话需要切换或操作者需要换班时，必须生成可继续执行的交接包，而不是把“已经做得差不多”当作结束。
+
 ## 必须产出的 Harness Contract
 
 至少覆盖六部分：
@@ -102,6 +106,7 @@ Codex 只能根据它能读到的东西工作。
    - logs / metrics / traces / health / browser evidence / external receipts
 5. `Evaluation Gates`
    - 能力点覆盖账本
+   - verifier issue ledger
    - happy path / negative path / recovery path / long-horizon path
 6. `Safety & Rollback`
    - kill switch
@@ -142,7 +147,18 @@ Codex 只能根据它能读到的东西工作。
 - 用户旅程与验收矩阵：`acceptance-test-design`
 - 状态机 / 会话 / 流式 / 长任务：`stateful-product-validation`
 - 外部系统与真实对账：`external-system-reconciliation`
+- 独立验收与反向找错：`independent-verification`
 - 最终完成声明：`verification-before-completion`
+
+### Stage 5：建立持续完善回路
+
+至少补齐：
+
+- `capability coverage ledger`：能力点、证据、风险等级、覆盖状态
+- `verifier issue ledger`：问题状态、重验结果、是否阻断完成
+- `continuation packet`：当前目标、未完成项、未关闭 issue、下一步唯一优先动作
+
+只要高风险能力点仍未覆盖、阻断 issue 未关闭或长周期观察尚未完成，就不能因为“已经跑起来了”而结束。
 
 ## 未完成判定
 
@@ -153,3 +169,5 @@ Codex 只能根据它能读到的东西工作。
 - 没有负路径与恢复路径证据
 - 没有 operator control path，例如禁用、暂停、回滚
 - agent 需要依赖口头知识，而不是仓库内可读知识
+- 没有 verifier issue ledger 或缺少独立重验证据
+- 因上下文逼近上限而直接停止，却没有 continuation packet

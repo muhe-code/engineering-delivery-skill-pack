@@ -4,7 +4,7 @@ Custom Codex skills for disciplined engineering delivery.
 
 This repository contains a set of custom skills designed to help Codex handle engineering work more like a rigorous delivery lead and less like a fast prototype generator.
 
-It focuses on eight things:
+It focuses on nine things:
 
 - providing a single entrypoint skill when the user wants to reference only one skill
 - turning ambiguous requests into requirements, PRDs, tech specs, plans, and execution trackers
@@ -12,6 +12,7 @@ It focuses on eight things:
 - designing explicit acceptance test cases before implementation
 - validating stateful products by real user lifecycle paths
 - reconciling local claims with external sources of truth
+- separating implementer and verifier when self-signoff would be risky
 - turning Codex session history into evidence-driven skill evolution
 - designing the harness for long-running agentic or stateful systems before feature work
 
@@ -64,6 +65,20 @@ It now also emphasizes:
 - formal-entry and real-path verification
 - reconciliation with external systems
 - redefining done when the product shape changes midstream
+- light process for small changes without light thinking about impact or regression
+- blocking completion until independent verifier issues are re-verified
+
+### `independent-verification`
+
+Separates implementer and verifier when a task cannot safely rely on self-signoff.
+
+It focuses on:
+
+- adversarial verification
+- structured verification issues
+- issue lifecycle and re-verification
+- impact-surface and regression-point review
+- blocking completion until evidence is independently confirmed
 
 ### `acceptance-test-design`
 
@@ -108,6 +123,7 @@ It forces harness-first thinking:
 - mechanical invariants
 - runtime signals and observability
 - evaluation gates
+- verifier issue ledger and continuation packet
 - kill switch and rollback
 
 ## Installation
