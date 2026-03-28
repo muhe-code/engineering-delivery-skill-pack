@@ -2,7 +2,12 @@
 
 面向 Codex 的工程交付技能包。
 
-这个仓库包含一组自定义技能，目标是让 Codex 在复杂工程任务里更像一个有纪律的工程负责人，而不是只会快速产出半成品。
+这个仓库包含两类内容：
+
+- 定义主方法论的核心自定义技能
+- 为了更接近作者本机真实工作流而一起发布的 companion skills
+
+目标是让 Codex 在复杂工程任务里更像一个有纪律的工程负责人，而不是只会快速产出半成品。
 
 它主要解决十类问题：
 
@@ -269,41 +274,28 @@ cp -R skills/* ~/.codex/skills/
 
 如果你的 Codex 环境支持 skill installer 工作流，这通常会比把大段 skill 内容直接粘贴进聊天更稳。
 
-## 为什么仓库里没有打包第三方 companion skills
+## 如何处理第三方来源的 Companion Skills
 
-本仓库故意不直接镜像第三方 companion skills。
+当第三方 companion skills 已经成为作者本机真实工作流的一部分，并且为了复现当前行为需要带上兼容改动时，这个仓库会直接把它们一起打包。
 
-原因：
+规则是：
 
-- 避免把上游 skill 包装成这里的原创内容
-- 避免来源与许可证边界不清
-- 减少后续跟随上游更新的维护成本
+- 这个仓库里的核心方法论仍然以自定义技能为主
+- 如果当前工作流依赖经过兼容调整的 companion skills，就会把它们作为打包内容一并发布
+- 这些 companion skills 不会被表述成这个仓库的原创能力
+- 具体来源与兼容说明统一写在 [SOURCES.md](./SOURCES.md)
 
-如果你希望尽量复现作者当前的更完整工作流，通常还会想额外安装这些技能：
-
-- `brainstorming`
-- `writing-plans`
-- `systematic-debugging`
-- `verification-before-completion`
-- `requesting-code-review`
-- `frontend-design`
-- `design-taste-frontend`
-
-这些更适合直接从各自上游来源安装。
+也就是说，这个仓库现在的定位不是“只展示最小自定义 skill”，而是“可直接安装、可较真实复现作者本机工作流的技能包”。
 
 ## 仓库结构
 
 ```text
 skills/
-  acceptance-test-design/
-  done-means-done/
-  external-system-reconciliation/
-  long-running-app-harness/
-  project-hub/
-  session-to-skill-evolution/
-  spec-to-ship/
-  stateful-product-validation/
+  <核心自定义技能>
+  <一起打包的 companion skills>
 ```
+
+每个 skill 的准确清单与来源状态，请看 [SOURCES.md](./SOURCES.md)。
 
 ## 许可证
 

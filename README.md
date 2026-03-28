@@ -1,8 +1,13 @@
 # Engineering Delivery Skill Pack
 
-Custom Codex skills for disciplined engineering delivery.
+Codex skills for disciplined engineering delivery.
 
-This repository contains a set of custom skills designed to help Codex handle engineering work more like a rigorous delivery lead and less like a fast prototype generator.
+This repository contains:
+
+- core custom skills that define the primary engineering workflow
+- bundled companion skills that make the published workflow closer to the author's real local Codex setup
+
+The goal is to make Codex handle engineering work more like a rigorous delivery lead and less like a fast prototype generator.
 
 It focuses on ten things:
 
@@ -271,41 +276,28 @@ Use the repo as the source of truth and install these skills:
 
 If your Codex environment supports a skill installer workflow, this usually works better than manually pasting long skill files into chat.
 
-## Why This Repo Does Not Bundle Third-Party Companion Skills
+## How Third-Party-Derived Companion Skills Are Handled
 
-This repository intentionally does not mirror third-party companion skills.
+This repository does bundle companion skills when they are part of the author's real local workflow and are needed for practical reproducibility.
 
-Reasons:
+The rule is:
 
-- to avoid repackaging upstream skills as if they were original to this repo
-- to keep licensing and attribution boundaries clean
-- to reduce maintenance burden when upstream skills evolve
+- core custom skills in this repo are the primary method
+- companion skills are bundled here when the local workflow depends on compatibility-adjusted versions
+- bundled companion skills are not presented as original work from this repo
+- source and compatibility notes live in [SOURCES.md](./SOURCES.md)
 
-If you want to reproduce the author’s broader workflow, you will usually also want companion skills such as:
-
-- `brainstorming`
-- `writing-plans`
-- `systematic-debugging`
-- `verification-before-completion`
-- `requesting-code-review`
-- `frontend-design`
-- `design-taste-frontend`
-
-Those are best installed from their own upstream sources.
+This means the current repository is intentionally an installable workflow pack, not only a minimal custom-skill showcase.
 
 ## Repository Layout
 
 ```text
 skills/
-  acceptance-test-design/
-  done-means-done/
-  external-system-reconciliation/
-  long-running-app-harness/
-  project-hub/
-  session-to-skill-evolution/
-  spec-to-ship/
-  stateful-product-validation/
+  <core custom skills>
+  <bundled companion skills>
 ```
+
+For the exact inventory and origin status of each skill, see [SOURCES.md](./SOURCES.md).
 
 ## License
 
