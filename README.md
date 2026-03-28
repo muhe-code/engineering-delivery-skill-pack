@@ -4,8 +4,9 @@ Custom Codex skills for disciplined engineering delivery.
 
 This repository contains a set of custom skills designed to help Codex handle engineering work more like a rigorous delivery lead and less like a fast prototype generator.
 
-It focuses on five things:
+It focuses on six things:
 
+- providing a single entrypoint skill when the user wants to reference only one skill
 - turning ambiguous requests into requirements, PRDs, tech specs, plans, and execution trackers
 - forcing real end-to-end closure instead of premature “done”
 - designing explicit acceptance test cases before implementation
@@ -15,6 +16,18 @@ It focuses on five things:
 Chinese version: [README.zh-CN.md](./README.zh-CN.md)
 
 ## Included Skills
+
+### `project-hub`
+
+A single-entry skill for users who do not want to remember multiple skill names.
+
+It decides whether the task needs:
+
+- `spec-to-ship`
+- `done-means-done`
+- both together
+
+It is a routing and orchestration layer, not a replacement for the underlying skills.
 
 ### `spec-to-ship`
 
@@ -102,6 +115,13 @@ Turn this request into requirements, a PRD, a tech spec, a plan, implementation,
 Do not stop while in-scope work, validation, review fixes, or doc updates remain.
 ```
 
+If you want a single skill entrypoint:
+
+```text
+Use $project-hub for this task.
+Decide whether it needs $spec-to-ship, but always finish it to $done-means-done quality.
+```
+
 If the task is UI-heavy:
 
 ```text
@@ -136,6 +156,7 @@ Recommended wording:
 ```text
 Install the skills from https://github.com/muhe-code/engineering-delivery-skill-pack.git into my Codex skills directory.
 Use the repo as the source of truth and install these skills:
+- project-hub
 - spec-to-ship
 - done-means-done
 - acceptance-test-design
@@ -174,6 +195,7 @@ skills/
   acceptance-test-design/
   done-means-done/
   external-system-reconciliation/
+  project-hub/
   spec-to-ship/
   stateful-product-validation/
 ```

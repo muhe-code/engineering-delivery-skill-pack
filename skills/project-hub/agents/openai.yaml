@@ -1,0 +1,4 @@
+interface:
+  display_name: "Project Hub"
+  short_description: "Single entrypoint that routes engineering work through the right delivery skills."
+  default_prompt: "Use $project-hub as the single entrypoint for this engineering task. Decide whether it needs $spec-to-ship, but always carry it through to $done-means-done quality."

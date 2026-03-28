@@ -4,8 +4,9 @@
 
 这个仓库包含一组自定义技能，目标是让 Codex 在复杂工程任务里更像一个有纪律的工程负责人，而不是只会快速产出半成品。
 
-它主要解决五类问题：
+它主要解决六类问题：
 
+- 当用户只想引用一个技能时，提供单入口编排
 - 把模糊请求推进成 requirements、PRD、tech spec、plan 和 execution tracker
 - 强制任务真正闭环，而不是过早宣布完成
 - 在实现前先设计逐条验收用例
@@ -15,6 +16,18 @@
 English version: [README.md](./README.md)
 
 ## 包含的技能
+
+### `project-hub`
+
+给只想引用一个 skill 的用户使用的单入口技能。
+
+它会判断当前任务需要：
+
+- `spec-to-ship`
+- `done-means-done`
+- 或两者联动
+
+它是路由与编排层，不是对底层 skill 的替代。
 
 ### `spec-to-ship`
 
@@ -100,6 +113,13 @@ cp -R skills/* ~/.codex/skills/
 只要范围内还有实现、验证、review 修复或文档回写没有完成，就不要停。
 ```
 
+如果你想只引用一个 skill：
+
+```text
+请使用 $project-hub 处理这个任务。
+由它判断是否需要联动 $spec-to-ship，但最终必须按 $done-means-done 的标准收口。
+```
+
 如果任务是 UI / 页面 / 产品交互：
 
 ```text
@@ -134,6 +154,7 @@ cp -R skills/* ~/.codex/skills/
 ```text
 请把 https://github.com/muhe-code/engineering-delivery-skill-pack.git 里的技能安装到我的 Codex skills 目录。
 以这个仓库为准，安装以下技能：
+- project-hub
 - spec-to-ship
 - done-means-done
 - acceptance-test-design
@@ -172,6 +193,7 @@ skills/
   acceptance-test-design/
   done-means-done/
   external-system-reconciliation/
+  project-hub/
   spec-to-ship/
   stateful-product-validation/
 ```
