@@ -19,7 +19,14 @@
 
 English version: [README.md](./README.md)
 
+来源与兼容说明：[SOURCES.md](./SOURCES.md)
+
 ## 包含的技能
+
+这个仓库现在同时包含两类内容：
+
+- 核心自定义技能
+- 为了复现本机真实工作流而一起打包的 companion skills
 
 ### `project-hub`
 
@@ -126,6 +133,22 @@ English version: [README.md](./README.md)
 - Pipeline
 - 或它们的组合
 
+## 一起打包的 Companion Skills
+
+为了让别人拉取这个仓库后，更接近作者本机的真实使用效果，这个仓库现在也一起打包了这些 companion skills：
+
+- `brainstorming`
+- `writing-plans`
+- `requesting-code-review`
+- `test-driven-development`
+- `using-git-worktrees`
+- `verification-before-completion`
+- `systematic-debugging`
+- `frontend-design`
+- `design-taste-frontend`
+
+其中部分 companion skills 带有本地兼容改动，目的是让它们遵守当前仓库的文档路径、编排优先级和独立验证模型，而不是继续沿用原始上游的默认流程。
+
 ### `long-running-app-harness`
 
 用于 agent、bot、worker、scheduler、queue、Webhook、长时间运行服务或任何需要长期观测、恢复、回滚的系统。
@@ -226,11 +249,22 @@ cp -R skills/* ~/.codex/skills/
 - project-hub
 - spec-to-ship
 - done-means-done
+- skill-engineering
 - acceptance-test-design
 - stateful-product-validation
 - external-system-reconciliation
 - session-to-skill-evolution
+- independent-verification
 - long-running-app-harness
+- brainstorming
+- writing-plans
+- requesting-code-review
+- test-driven-development
+- using-git-worktrees
+- verification-before-completion
+- systematic-debugging
+- frontend-design
+- design-taste-frontend
 ```
 
 如果你的 Codex 环境支持 skill installer 工作流，这通常会比把大段 skill 内容直接粘贴进聊天更稳。

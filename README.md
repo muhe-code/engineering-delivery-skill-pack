@@ -19,7 +19,14 @@ It focuses on ten things:
 
 Chinese version: [README.zh-CN.md](./README.zh-CN.md)
 
+Source and compatibility notes: [SOURCES.md](./SOURCES.md)
+
 ## Included Skills
+
+This repository now ships both:
+
+- core custom skills
+- bundled companion skills needed to reproduce the local workflow more faithfully
 
 ### `project-hub`
 
@@ -126,6 +133,22 @@ It helps choose the right structure first:
 - Pipeline
 - or a combination of them
 
+## Bundled Companion Skills
+
+To make `project-hub` behave more like it does in the author's local Codex environment, this repository now also bundles these companion skills:
+
+- `brainstorming`
+- `writing-plans`
+- `requesting-code-review`
+- `test-driven-development`
+- `using-git-worktrees`
+- `verification-before-completion`
+- `systematic-debugging`
+- `frontend-design`
+- `design-taste-frontend`
+
+Some of these companion skills include local compatibility adjustments so they respect this repository's document paths, orchestration rules, and independent-verification model.
+
 ### `long-running-app-harness`
 
 For agents, bots, schedulers, workers, queues, webhooks, long-running services, or any system that must be observable, replayable, and recoverable over time.
@@ -228,11 +251,22 @@ Use the repo as the source of truth and install these skills:
 - project-hub
 - spec-to-ship
 - done-means-done
+- skill-engineering
 - acceptance-test-design
 - stateful-product-validation
 - external-system-reconciliation
 - session-to-skill-evolution
+- independent-verification
 - long-running-app-harness
+- brainstorming
+- writing-plans
+- requesting-code-review
+- test-driven-development
+- using-git-worktrees
+- verification-before-completion
+- systematic-debugging
+- frontend-design
+- design-taste-frontend
 ```
 
 If your Codex environment supports a skill installer workflow, this usually works better than manually pasting long skill files into chat.
