@@ -1,0 +1,4 @@
+interface:
+  display_name: "Long-Running App Harness"
+  short_description: "Design the harness before building long-running agentic or stateful systems."
+  default_prompt: "Use $long-running-app-harness for this long-running application or agent system. Define the harness first: knowledge entrypoints, runtime signals, evaluation gates, safety rails, and rollback."

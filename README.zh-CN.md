@@ -4,7 +4,7 @@
 
 这个仓库包含一组自定义技能，目标是让 Codex 在复杂工程任务里更像一个有纪律的工程负责人，而不是只会快速产出半成品。
 
-它主要解决七类问题：
+它主要解决八类问题：
 
 - 当用户只想引用一个技能时，提供单入口编排
 - 把模糊请求推进成 requirements、PRD、tech spec、plan 和 execution tracker
@@ -13,6 +13,7 @@
 - 按真实用户生命周期路径验证有状态产品
 - 把本地推断和外部权威真相源区分开
 - 把 Codex 历史会话沉淀成有证据的技能进化
+- 在长时间运行系统里，先设计 harness，再做功能开发
 
 English version: [README.md](./README.md)
 
@@ -96,6 +97,19 @@ English version: [README.md](./README.md)
 - 只更新某个根技能及其递归关联技能
 - 若未指定范围，则更新全局技能集合和当前工程技能集合
 
+### `long-running-app-harness`
+
+用于 agent、bot、worker、scheduler、queue、Webhook、长时间运行服务或任何需要长期观测、恢复、回滚的系统。
+
+它要求先做 harness 设计，而不是后补：
+
+- 仓库内知识入口
+- 一键启动与隔离
+- 机械化约束
+- 运行时信号与可观测性
+- eval gate
+- kill switch 与 rollback
+
 ## 安装
 
 把 `skills/` 下的目录复制到 Codex skills 目录，例如：
@@ -163,6 +177,13 @@ cp -R skills/* ~/.codex/skills/
 请使用 $external-system-reconciliation，在宣称成功前先与外部权威系统完成对账。
 ```
 
+如果任务是 agent、bot、后台任务、长运行服务或 scheduler：
+
+```text
+请先使用 $long-running-app-harness。
+不要先堆功能实现，先把知识入口、运行时 signals、eval gate、安全护栏和回滚路径设计好。
+```
+
 ## 建议直接把链接给 Codex，让它自行下载
 
 实践里，最省事的方式通常是直接把仓库链接交给 Codex，让它从 GitHub 安装这些技能。
@@ -179,6 +200,7 @@ cp -R skills/* ~/.codex/skills/
 - stateful-product-validation
 - external-system-reconciliation
 - session-to-skill-evolution
+- long-running-app-harness
 ```
 
 如果你的 Codex 环境支持 skill installer 工作流，这通常会比把大段 skill 内容直接粘贴进聊天更稳。
@@ -212,6 +234,7 @@ skills/
   acceptance-test-design/
   done-means-done/
   external-system-reconciliation/
+  long-running-app-harness/
   project-hub/
   session-to-skill-evolution/
   spec-to-ship/

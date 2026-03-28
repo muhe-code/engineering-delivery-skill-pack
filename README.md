@@ -4,7 +4,7 @@ Custom Codex skills for disciplined engineering delivery.
 
 This repository contains a set of custom skills designed to help Codex handle engineering work more like a rigorous delivery lead and less like a fast prototype generator.
 
-It focuses on seven things:
+It focuses on eight things:
 
 - providing a single entrypoint skill when the user wants to reference only one skill
 - turning ambiguous requests into requirements, PRDs, tech specs, plans, and execution trackers
@@ -13,6 +13,7 @@ It focuses on seven things:
 - validating stateful products by real user lifecycle paths
 - reconciling local claims with external sources of truth
 - turning Codex session history into evidence-driven skill evolution
+- designing the harness for long-running agentic or stateful systems before feature work
 
 Chinese version: [README.zh-CN.md](./README.zh-CN.md)
 
@@ -96,6 +97,19 @@ It supports scoped updates:
 - update only a named root skill and its recursively related skills
 - or, if no scope is specified, update the global skill set and the current project skill set
 
+### `long-running-app-harness`
+
+For agents, bots, schedulers, workers, queues, webhooks, long-running services, or any system that must be observable, replayable, and recoverable over time.
+
+It forces harness-first thinking:
+
+- repo-resident knowledge entrypoints
+- one-command boot and isolation
+- mechanical invariants
+- runtime signals and observability
+- evaluation gates
+- kill switch and rollback
+
 ## Installation
 
 Copy the skill directories under `skills/` into your Codex skills directory:
@@ -165,6 +179,13 @@ If the task depends on third-party or remote truth:
 Use $external-system-reconciliation and verify user-visible results against the external source of truth before claiming success.
 ```
 
+If the task is a long-running app, bot, worker, or scheduler:
+
+```text
+Use $long-running-app-harness before deep implementation.
+Define the harness first: knowledge entrypoints, runtime signals, evaluation gates, safety rails, and rollback.
+```
+
 ## Recommended Way To Give This Repo To Codex
 
 In practice, the easiest way is to give Codex the repository link directly and ask it to install the skills from GitHub.
@@ -181,6 +202,7 @@ Use the repo as the source of truth and install these skills:
 - stateful-product-validation
 - external-system-reconciliation
 - session-to-skill-evolution
+- long-running-app-harness
 ```
 
 If your Codex environment supports a skill installer workflow, this usually works better than manually pasting long skill files into chat.
@@ -214,6 +236,7 @@ skills/
   acceptance-test-design/
   done-means-done/
   external-system-reconciliation/
+  long-running-app-harness/
   project-hub/
   session-to-skill-evolution/
   spec-to-ship/
