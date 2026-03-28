@@ -4,7 +4,7 @@
 
 这个仓库包含一组自定义技能，目标是让 Codex 在复杂工程任务里更像一个有纪律的工程负责人，而不是只会快速产出半成品。
 
-它主要解决六类问题：
+它主要解决七类问题：
 
 - 当用户只想引用一个技能时，提供单入口编排
 - 把模糊请求推进成 requirements、PRD、tech spec、plan 和 execution tracker
@@ -12,6 +12,7 @@
 - 在实现前先设计逐条验收用例
 - 按真实用户生命周期路径验证有状态产品
 - 把本地推断和外部权威真相源区分开
+- 把 Codex 历史会话沉淀成有证据的技能进化
 
 English version: [README.md](./README.md)
 
@@ -86,6 +87,15 @@ English version: [README.md](./README.md)
 
 重点解决“本地日志或文案说成功，但外部真实状态并不一致”的情况。
 
+### `session-to-skill-evolution`
+
+用于按 session、某一天或某个时间范围回看 Codex 历史对话，提炼用户如何指导 Codex、执行里反复暴露了哪些问题，并把这些发现真正回写成 skill 更新。
+
+它支持两种范围：
+
+- 只更新某个根技能及其递归关联技能
+- 若未指定范围，则更新全局技能集合和当前工程技能集合
+
 ## 安装
 
 把 `skills/` 下的目录复制到 Codex skills 目录，例如：
@@ -118,6 +128,14 @@ cp -R skills/* ~/.codex/skills/
 ```text
 请使用 $project-hub 处理这个任务。
 由它判断是否需要联动 $spec-to-ship，但最终必须按 $done-means-done 的标准收口。
+```
+
+如果你想让 Codex 从历史会话里学，并真正更新 skill：
+
+```text
+请使用 $session-to-skill-evolution 处理这些 session 或这个日期范围。
+分析我是怎么指导 Codex 的、Codex 重复暴露了哪些问题，并把这些发现回写到作用域内的技能。
+如果我指定了根技能，例如 $project-hub，就只更新它和它递归关联的技能。
 ```
 
 如果任务是 UI / 页面 / 产品交互：
@@ -160,6 +178,7 @@ cp -R skills/* ~/.codex/skills/
 - acceptance-test-design
 - stateful-product-validation
 - external-system-reconciliation
+- session-to-skill-evolution
 ```
 
 如果你的 Codex 环境支持 skill installer 工作流，这通常会比把大段 skill 内容直接粘贴进聊天更稳。
@@ -194,6 +213,7 @@ skills/
   done-means-done/
   external-system-reconciliation/
   project-hub/
+  session-to-skill-evolution/
   spec-to-ship/
   stateful-product-validation/
 ```

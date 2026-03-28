@@ -4,7 +4,7 @@ Custom Codex skills for disciplined engineering delivery.
 
 This repository contains a set of custom skills designed to help Codex handle engineering work more like a rigorous delivery lead and less like a fast prototype generator.
 
-It focuses on six things:
+It focuses on seven things:
 
 - providing a single entrypoint skill when the user wants to reference only one skill
 - turning ambiguous requests into requirements, PRDs, tech specs, plans, and execution trackers
@@ -12,6 +12,7 @@ It focuses on six things:
 - designing explicit acceptance test cases before implementation
 - validating stateful products by real user lifecycle paths
 - reconciling local claims with external sources of truth
+- turning Codex session history into evidence-driven skill evolution
 
 Chinese version: [README.zh-CN.md](./README.zh-CN.md)
 
@@ -86,6 +87,15 @@ For tasks involving third-party APIs, remote services, deployment state, payment
 
 Its purpose is to catch cases where local logs or UI messages claim success but the external system does not agree.
 
+### `session-to-skill-evolution`
+
+For cases where you want to inspect one or more Codex sessions, a day of sessions, or a date range of sessions, extract how the user actually guides Codex, identify recurring execution failures, and convert those findings into skill updates.
+
+It supports scoped updates:
+
+- update only a named root skill and its recursively related skills
+- or, if no scope is specified, update the global skill set and the current project skill set
+
 ## Installation
 
 Copy the skill directories under `skills/` into your Codex skills directory:
@@ -120,6 +130,14 @@ If you want a single skill entrypoint:
 ```text
 Use $project-hub for this task.
 Decide whether it needs $spec-to-ship, but always finish it to $done-means-done quality.
+```
+
+If you want Codex to learn from previous sessions and update skills:
+
+```text
+Use $session-to-skill-evolution for these session IDs or this date range.
+Analyze how I guided Codex, identify recurring execution failures, and update the right skills in scope.
+If I specify a root skill such as $project-hub, only update that skill and its recursively related skills.
 ```
 
 If the task is UI-heavy:
@@ -162,6 +180,7 @@ Use the repo as the source of truth and install these skills:
 - acceptance-test-design
 - stateful-product-validation
 - external-system-reconciliation
+- session-to-skill-evolution
 ```
 
 If your Codex environment supports a skill installer workflow, this usually works better than manually pasting long skill files into chat.
@@ -196,6 +215,7 @@ skills/
   done-means-done/
   external-system-reconciliation/
   project-hub/
+  session-to-skill-evolution/
   spec-to-ship/
   stateful-product-validation/
 ```

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Session To Skill Evolution"
+  short_description: "Turn Codex sessions into evidence-driven skill updates."
+  default_prompt: "Use $session-to-skill-evolution to analyze these Codex sessions, identify recurring user-guidance and execution failures, and update the right skills in scope."
